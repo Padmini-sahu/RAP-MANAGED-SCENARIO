@@ -1,0 +1,22 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Travel ( Projection view- managed )'
+define root view entity ZC_TRAVEL_M
+  provider contract transactional_query
+  as projection on ZPS_TRAVEL_TP
+{
+  key TravelId,
+      AgencyId,
+      CustomerId,
+      BeginDate,
+      BookingFee,
+      TotalPrice,
+      CurrencyCode,
+      Description,
+      OverallStatus,
+      CreatedBy,
+      CreatedAt,
+      LastChangedBy,
+      LastChangedAt,
+      /* Associations */
+      _Bookings : redirected to composition child ZC_BOOKING_M
+}
