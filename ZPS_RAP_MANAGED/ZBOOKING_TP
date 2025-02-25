@@ -1,0 +1,26 @@
+@AbapCatalog.viewEnhancementCategory: [#NONE]
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Booking view( for managed- TP )'
+@ObjectModel.usageType:{
+    serviceQuality: #X,
+    sizeCategory: #S,
+    dataClass: #MIXED
+}
+define view entity ZBOOKING_TP
+  as select from ZI_BOOKING_M
+association to parent ZPS_TRAVEL_TP as _Travel on 
+$projection.TravelId = _Travel.TravelId
+{
+  key TravelId,
+  key BookingId,
+      BookingDate,
+      CustomerId,
+      CarrierId,
+      ConnectionId,
+      FlightDate,
+      FlightPrice,
+      CurrencyCode,
+      BookingStatus,
+      LastChangedAt,
+      _Travel
+}
