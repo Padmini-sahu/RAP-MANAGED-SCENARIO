@@ -1,0 +1,21 @@
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@EndUserText.label: 'Travel View( Managed TP )'
+define root view entity ZPS_TRAVEL_TP 
+as select from ZI_TRAVEL_M
+composition[0..*] of ZBOOKING_TP as _Bookings
+{
+    key TravelId,
+    AgencyId,
+    CustomerId,
+    BeginDate,
+    BookingFee,
+    TotalPrice,
+    CurrencyCode,
+    Description,
+    OverallStatus,
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LastChangedAt,
+    _Bookings 
+}
